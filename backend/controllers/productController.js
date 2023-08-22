@@ -1,3 +1,23 @@
+const Product = require('../Models/productModel')
+
+// create the product
+
+exports.createProducts = async(req,res)=>{
+  try{
+    const product = await Product.create(req.body)
+    res.status(201).json({
+      status:'success',
+      product
+    })
+  }catch(err){
+    res.status(400).json({
+      status:'failed',
+      message:err
+    })
+  }
+}
+
+
 exports.getAllProducts = (req,res)=>{
   res.status(200).json({
     status:'success',
@@ -6,9 +26,3 @@ exports.getAllProducts = (req,res)=>{
   })
 }
 
-// exports.getOneProduct = (req,res)=>{
-//   res.status(200).json({
-//     status:'sucess',
-//     message:'Chill'
-//   })
-// }
