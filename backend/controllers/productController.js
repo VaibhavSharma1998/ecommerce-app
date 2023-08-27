@@ -1,3 +1,12 @@
+// The controllers folder contains functions that handle
+//  the business logic for various routes and endpoints.
+
+// These functions interact with the models to perform 
+// CRUD operations and data manipulation
+
+
+
+
 const Product = require('../Models/productModel')
 
 // create the product --admin(post)
@@ -12,7 +21,8 @@ exports.createProducts = async(req,res)=>{
   }catch(err){
     res.status(400).json({
       status:'failed',
-      message:err
+      message:err,
+      
     })
   }
 }
