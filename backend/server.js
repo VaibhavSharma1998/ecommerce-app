@@ -1,3 +1,10 @@
+// server.js is responsible for starting your Express server.
+
+// It imports the app instance from app.js and listens on a specific port.
+
+// It also often handles environment configurations and connections to databases.
+
+
 const mongoose = require('mongoose');
 
 const app = require('./app')
@@ -14,6 +21,7 @@ mongoose.connect(DB_URI, {
       })
   .then(() => {
     console.log('Connected to MongoDB Atlas 😎 😂');
+    
   })
   .catch(error => {
     console.error('Error connecting to MongoDB Atlas:', error.message);
@@ -23,4 +31,5 @@ mongoose.connect(DB_URI, {
 
 app.listen(process.env.PORT,()=>{
     console.log(`Listening on Port ${process.env.PORT}`)
+    
 })
