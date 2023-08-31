@@ -69,3 +69,20 @@ exports.loginUser = async (req, res) => {
     });
   }
 };
+
+
+// logout user
+
+exports.logoutUser = async(req,res)=>{
+  res.cookie("token",null,{
+    expires: new Date(Date.now()),
+    httpOnly:true,
+  })
+
+  try{
+   res.status(200).json({message:'Log out suceessfully!'})
+    
+  }catch(err){
+    res.status(400).json({message:'Token not found'})   
+  }
+}
