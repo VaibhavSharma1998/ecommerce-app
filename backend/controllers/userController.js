@@ -1,14 +1,17 @@
 const User = require("../Models/userModel");
 const bcrypt = require("bcryptjs");
+const sendToken = require("../utils/jwtToken")
 
 exports.register = async (req, res) => {
   try {
     const user = await User.create(req.body);
-    const token = user.getJWTToken();
-    res.status(201).json({
-      status: "success",
-      token,
-    });
+    // const token = user.getJWTToken();
+    // res.status(201).json({
+    //   status: "success",
+    //   token,
+    // });
+
+    sendToken(user,201,res)
   } catch (err) {
     res.status(400).json({
       status: "failed",
@@ -39,7 +42,7 @@ exports.loginUser = async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
-
+ 
     // check if password matches
 
    
@@ -51,11 +54,14 @@ exports.loginUser = async (req, res) => {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
-    const token = user.getJWTToken();
-    res.status(201).json({
-      status: "successfully login",
-      token,
-    });
+    // const token = user.getJWTToken();
+    // res.status(200).json({
+    //   status: "success",
+    //   token,
+    // });
+
+    sendToken(user,200,res)
+    
   } catch (err) {
     res.status(400).json({
       status: "failed",

@@ -6,12 +6,16 @@
 // It imports the routes from the routes folder.
 
 const express = require("express");
+const cookieParser = require("cookie-parser"); 
 
 const app = express();
 
 // convert the incoming JSON data into a JavaScript object
 
 app.use(express.json())
+
+// Use the cookie-parser middleware
+app.use(cookieParser());
 
 const productRouter = require("./routes/productRouter");
 const userRouter = require("./routes/userRoute")
