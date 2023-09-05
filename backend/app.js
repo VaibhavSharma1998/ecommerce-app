@@ -7,12 +7,18 @@
 
 const express = require("express");
 const cookieParser = require("cookie-parser"); 
+const cors = require('cors');
 
 const app = express();
+
+// Use cors middleware before your route handlers
+app.use(cors());
 
 // convert the incoming JSON data into a JavaScript object
 
 app.use(express.json())
+
+
 
 // Use the cookie-parser middleware
 app.use(cookieParser());
