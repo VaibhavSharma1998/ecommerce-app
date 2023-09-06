@@ -23,7 +23,7 @@ exports.register = async (req, res) => {
 // login User
 
 exports.loginUser = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password  } = req.body;
 
   //checking if user has given password and email both
 
@@ -59,6 +59,8 @@ exports.loginUser = async (req, res) => {
     //   status: "success",
     //   token,
     // });
+
+    
 
     sendToken(user,200,res)
     
